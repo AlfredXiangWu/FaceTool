@@ -25,7 +25,7 @@ namespace FaceTool
             grid.MouseUp += Grid_MouseUp;
         }
 
-        private string[] img = { ".jpg", ".bmp", ".png" };
+        private readonly string[] img = { ".jpg", ".bmp", ".png" };
         private List<Face> list;
         private int index = 0;
         private EllipsePoint ep;
@@ -43,7 +43,7 @@ namespace FaceTool
 
         private async void txtPath_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.End)
+            if (e.Key == Key.Enter)
             {
                 await loadFiles();
                 setImage();
@@ -59,7 +59,7 @@ namespace FaceTool
                 {
                     try
                     {
-                        var groups = di.GetFiles().GroupBy(f => f.Extension);
+                        var groups = di.GetFiles().OrderBy(f => f.Name).GroupBy(f => f.Extension);
                         if (groups.Count() >= 2)
                         {
                             var pg = groups.First(g => g.Key.ToLower() == ".5pt");
