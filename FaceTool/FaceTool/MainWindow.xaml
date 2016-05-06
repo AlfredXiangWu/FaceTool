@@ -5,8 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FaceTool"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="FaceTool" Height="600" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="btnOpen" Content="Open" HorizontalAlignment="Left" Width="60" Height="30" Click="btnOpen_Click"/>
+        <TextBox x:Name="txtPath" Margin="60,0,0,0" VerticalContentAlignment="Center" KeyDown="txtPath_KeyDown" Grid.ColumnSpan="2"/>
+
+        <Button x:Name="btnLast" Width="50" Height="30" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Last" Margin="0,10,0,0" Grid.Column="1" Click="btnLast_Click"/>
+        <TextBlock x:Name="txtIndex" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0"/>
+        <Button x:Name="btnNext" Width="50" Height="30" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Next" Margin="0,80,0,0" Grid.Column="1" Click="btnNext_Click"/>
+
+        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <Grid x:Name="grid" Grid.Row="1">
+                <Image x:Name="image" Stretch="None" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <Canvas x:Name="canvas">
+                </Canvas>
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </Window>
